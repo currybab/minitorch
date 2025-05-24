@@ -1,206 +1,340 @@
-"""
-Collection of the core mathematical operators used throughout the code base.
-"""
+"""Collection of the core mathematical operators used throughout the code base."""
 
 import math
-from typing import Callable, Iterable
 
 # ## Task 0.1
+from typing import List
+
 #
 # Implementation of a prelude of elementary functions.
 
+# Mathematical functions:
+# - mul
+# - id
+# - add
+# - neg
+# - lt
+# - eq
+# - max
+# - is_close
+# - sigmoid
+# - relu
+# - log
+# - exp
+# - log_back
+# - inv
+# - inv_back
+# - relu_back
+#
+# For sigmoid calculate as:
+# $f(x) =  \frac{1.0}{(1.0 + e^{-x})}$ if x >=0 else $\frac{e^x}{(1.0 + e^{x})}$
+# For is_close:
+# $f(x) = |x - y| < 1e-2$
 
+
+# TODO: Implement for Task 0.1.
 def mul(x: float, y: float) -> float:
-    "$f(x, y) = x * y$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Multiplies two numbers.
+
+    Args:
+    ----
+        x: A float.
+        y: A float.
+
+    Returns:
+    -------
+        x * y
+    """
+    return x * y
 
 
 def id(x: float) -> float:
-    "$f(x) = x$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Returns the input unchanged.
+
+    Args:
+    ----
+        x: Input value.
+
+    Returns:
+    -------
+        x
+    """
+    return x
 
 
 def add(x: float, y: float) -> float:
-    "$f(x, y) = x + y$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Adds two numbers.
+
+    Args:
+    ----
+        x: A float.
+        y: A float.
+
+    Returns:
+    -------
+        x + y
+    """
+    return x + y
 
 
 def neg(x: float) -> float:
-    "$f(x) = -x$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Negates a number.
+
+    Args:
+    ----
+        x: A float.
+
+    Returns:
+    -------
+        -x
+    """
+    return -x
 
 
 def lt(x: float, y: float) -> float:
-    "$f(x) =$ 1.0 if x is less than y else 0.0"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Checks if one number is less than another.
+
+    Args:
+    ----
+        x: A float.
+        y: A float.
+
+    Returns:
+    -------
+        x < y
+    """
+    return x < y
 
 
 def eq(x: float, y: float) -> float:
-    "$f(x) =$ 1.0 if x is equal to y else 0.0"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Checks if two numbers are equal.
+
+    Args:
+    ----
+        x: A float.
+        y: A float.
+
+    Returns:
+    -------
+        x == y
+    """
+    return x == y
 
 
 def max(x: float, y: float) -> float:
-    "$f(x) =$ x if x is greater than y else y"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Returns the maximum of two numbers.
+
+    Args:
+    ----
+        x: A float.
+        y: A float.
+
+    Returns:
+    -------
+        max(x, y)
+    """
+    return x if x > y else y
 
 
 def is_close(x: float, y: float) -> float:
-    "$f(x) = |x - y| < 1e-2$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Checks if two numbers are close in value.
+
+    Args:
+    ----
+        x: A float.
+        y: A float.
+
+    Returns:
+    -------
+        abs(x - y) < 1e-2
+    """
+    return abs(x - y) < 1e-2
 
 
 def sigmoid(x: float) -> float:
-    r"""
-    $f(x) =  \frac{1.0}{(1.0 + e^{-x})}$
+    r"""Calculates the sigmoid function.
 
-    (See https://en.wikipedia.org/wiki/Sigmoid_function )
+    Args:
+    ----
+        x: A float.
 
-    Calculate as
-
-    $f(x) =  \frac{1.0}{(1.0 + e^{-x})}$ if x >=0 else $\frac{e^x}{(1.0 + e^{x})}$
-
-    for stability.
+    Returns:
+    -------
+        \frac{1.0}{(1.0 + e^{-x})}$ if x >=0 else $\frac{e^x}{(1.0 + e^{x})}
     """
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    return 1.0 / (1.0 + math.exp(-x)) if x >= 0 else math.exp(x) / (1.0 + math.exp(x))
 
 
 def relu(x: float) -> float:
+    """Applies the ReLU activation function.
+
+    Args:
+    ----
+        x: A float.
+
+    Returns:
+    -------
+        max(0, x)
     """
-    $f(x) =$ x if x is greater than 0, else 0
-
-    (See https://en.wikipedia.org/wiki/Rectifier_(neural_networks) .)
-    """
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
-
-
-EPS = 1e-6
+    return max(0, x)
 
 
 def log(x: float) -> float:
-    "$f(x) = log(x)$"
-    return math.log(x + EPS)
+    """Calculates the natural logarithm.
+
+    Args:
+    ----
+        x: A float.
+
+    Returns:
+    -------
+        math.log(x)
+    """
+    return math.log(x)
 
 
 def exp(x: float) -> float:
-    "$f(x) = e^{x}$"
+    """Calculates the exponential.
+
+    Args:
+    ----
+        x: A float.
+
+    Returns:
+    -------
+        math.exp(x)
+    """
     return math.exp(x)
 
 
-def log_back(x: float, d: float) -> float:
-    r"If $f = log$ as above, compute $d \times f'(x)$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
-
-
 def inv(x: float) -> float:
-    "$f(x) = 1/x$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+    """Calculates the reciprocal.
+
+    Args:
+    ----
+        x: A float.
+
+    Returns:
+    -------
+        1.0 / x
+    """
+    return 1.0 / x
 
 
-def inv_back(x: float, d: float) -> float:
-    r"If $f(x) = 1/x$ compute $d \times f'(x)$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+def log_back(x: float, grad: float) -> float:
+    """Computes the derivative of log times a second arg.
+
+    Args:
+    ----
+        x: A float.
+        grad: grad.
+
+    Returns:
+    -------
+        1.0 / x * grad
+    """
+    return 1.0 / x * grad
 
 
-def relu_back(x: float, d: float) -> float:
-    r"If $f = relu$ compute $d \times f'(x)$"
-    # TODO: Implement for Task 0.1.
-    raise NotImplementedError('Need to implement for Task 0.1')
+def inv_back(x: float, grad: float) -> float:
+    """Computes the derivative of reciprocal times a second arg.
+
+    Args:
+    ----
+        x: A float.
+        grad: grad.
+
+    Returns:
+    -------
+        -1.0 / (x * x) * grad
+    """
+    return -1.0 / (x * x) * grad
+
+
+def relu_back(x: float, grad: float) -> float:
+    """Computes the derivative of ReLU times a second arg.
+
+    Args:
+    ----
+        x: A float.
+        grad: grad.
+
+    Returns:
+    -------
+        grad if x > 0 else 0.0
+    """
+    return grad if x > 0 else 0.0
 
 
 # ## Task 0.3
 
 # Small practice library of elementary higher-order functions.
 
-
-def map(fn: Callable[[float], float]) -> Callable[[Iterable[float]], Iterable[float]]:
-    """
-    Higher-order map.
-
-    See https://en.wikipedia.org/wiki/Map_(higher-order_function)
-
-    Args:
-        fn: Function from one value to one value.
-
-    Returns:
-         A function that takes a list, applies `fn` to each element, and returns a
-         new list
-    """
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
+# Implement the following core functions
+# - map
+# - zipWith
+# - reduce
+#
+# Use these to implement
+# - negList : negate a list
+# - addLists : add two lists together
+# - sum: sum lists
+# - prod: take the product of lists
 
 
-def negList(ls: Iterable[float]) -> Iterable[float]:
-    "Use `map` and `neg` to negate each element in `ls`"
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
-
-
-def zipWith(
-    fn: Callable[[float, float], float]
-) -> Callable[[Iterable[float], Iterable[float]], Iterable[float]]:
-    """
-    Higher-order zipwith (or map2).
-
-    See https://en.wikipedia.org/wiki/Map_(higher-order_function)
+# TODO: Implement for Task 0.3.
+def addLists(ls1: List[float], ls2: List[float]) -> List[float]:
+    """Add two lists together.
 
     Args:
-        fn: combine two values
+    ----
+        ls1: A list of floats.
+        ls2: A list of floats.
 
     Returns:
-         Function that takes two equally sized lists `ls1` and `ls2`, produce a new list by
-         applying fn(x, y) on each pair of elements.
-
+    -------
+        ls1 + ls2
     """
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
+    return [x + y for x, y in zip(ls1, ls2)]
 
 
-def addLists(ls1: Iterable[float], ls2: Iterable[float]) -> Iterable[float]:
-    "Add the elements of `ls1` and `ls2` using `zipWith` and `add`"
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
-
-
-def reduce(
-    fn: Callable[[float, float], float], start: float
-) -> Callable[[Iterable[float]], float]:
-    r"""
-    Higher-order reduce.
+def negList(ls: List[float]) -> List[float]:
+    """Negate a list.
 
     Args:
-        fn: combine two values
-        start: start value $x_0$
+    ----
+        ls: A list of floats.
 
     Returns:
-         Function that takes a list `ls` of elements
-         $x_1 \ldots x_n$ and computes the reduction :math:`fn(x_3, fn(x_2,
-         fn(x_1, x_0)))`
+    -------
+        -ls
     """
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
+    return [-x for x in ls]
 
 
-def sum(ls: Iterable[float]) -> float:
-    "Sum up a list using `reduce` and `add`."
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
+def sum(ls: List[float]) -> float:
+    """Sum lists.
+
+    Args:
+    ----
+        ls: A list of floats.
+
+    Returns:
+    -------
+        sum(ls)
+    """
+    return sum(ls)
 
 
-def prod(ls: Iterable[float]) -> float:
-    "Product of a list using `reduce` and `mul`."
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
+def prod(ls: List[float]) -> float:
+    """Product of lists.
+
+    Args:
+    ----
+        ls: A list of floats.
+
+    Returns:
+    -------
+        prod(ls)
+    """
+    return prod(ls)
