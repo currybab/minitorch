@@ -103,7 +103,7 @@ def lt(x: float, y: float) -> float:
     -------
         x < y
     """
-    return x < y
+    return float(x < y)
 
 
 def eq(x: float, y: float) -> float:
@@ -118,7 +118,7 @@ def eq(x: float, y: float) -> float:
     -------
         x == y
     """
-    return x == y
+    return float(x == y)
 
 
 def max(x: float, y: float) -> float:
@@ -148,7 +148,7 @@ def is_close(x: float, y: float) -> float:
     -------
         abs(x - y) < 1e-4
     """
-    return abs(x - y) < 1e-4
+    return float(abs(x - y) < 1e-4)
 
 
 def sigmoid(x: float) -> float:
@@ -176,7 +176,7 @@ def relu(x: float) -> float:
     -------
         max(0, x)
     """
-    return max(0, x)
+    return max(0.0, x)
 
 
 def log(x: float) -> float:
