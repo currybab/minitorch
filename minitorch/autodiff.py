@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Any, Iterable, List, Tuple
+from minitorch.operators import map, sum
 
 from typing_extensions import Protocol
 
@@ -22,8 +23,10 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
     Returns:
         An approximation of $f'_i(x_0, \ldots, x_{n-1})$
     """
-    # TODO: Implement for Task 1.1.
-    raise NotImplementedError('Need to implement for Task 1.1')
+    base = f(*vals)
+    vals_up = tuple(val + epsilon if i == arg else val for i, val in enumerate(vals))
+    base_up = f(*vals_up)
+    return (base_up - base) / epsilon
 
 
 variable_count = 1
